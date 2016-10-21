@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Entfernung1" type="distance"/>
+                <xs:element name="Entfernung2" type="distance2"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:simpleType name="distance">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(([1-9][0-9]*)|[0])(,[0-9]{1,3})?( m| km)"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    
+    <xs:simpleType name="distance2">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="(([1-9][0-9]{0,2}(\.[0-9]{3})*)|0)(,[0-9]{1,3})?( m| km)"></xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

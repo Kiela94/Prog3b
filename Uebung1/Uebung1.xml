@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE hello>
+
+<hello>Hello, world!
+<spezial>&lt;&lt;&lt;&lt;&lt; &amp;&amp;&amp;&amp;&amp; &gt;&gt;&gt;&gt;&gt;</spezial>
+</hello>
+
+<!-- Folie 43
+
+
+Name Zeichen
+amp &
+apos ’  
+gt >
+lt <
+quot "
+#n n-tes Unicodezeichen
+
+-->
