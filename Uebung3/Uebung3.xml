@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Projekt SYSTEM "Uebung3.dtd">
+
+<Projekt 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="Uebung3.xsd"
+    Aufgabe="Schreibe ein Buch" Deadline="2012-12-31T06:00:00">
+    
+    <Mitarbeiter MitarbeiterID="ID200" Vorgesetzter="ID200"> <!--Der Vorgesetzte hat sich selbst als Referenz-->
+        <Vorname>Ralf</Vorname>
+        <Nachname>Stoewing</Nachname>
+    </Mitarbeiter>
+    <Mitarbeiter MitarbeiterID="M201" Vorgesetzter="ID200">
+        <Vorname>Erik</Vorname>
+        <Nachname>Mindermann</Nachname>
+        <Skill>Softwareentwickler</Skill>
+    </Mitarbeiter>
+    <Mitarbeiter MitarbeiterID="M202" Vorgesetzter="ID200">
+        <Vorname>Natascha</Vorname>
+        <Nachname>Meinhardt</Nachname>
+        <Skill>Azubi</Skill>
+    </Mitarbeiter>
+    
+    <Team Teamleiter="ID200" Teilaufgabe="Schreibe ein Kapitel" Deadline="2012-12-30">
+        <Teammitglied MitarbeiterID="ID200"/>
+        <Teammitglied MitarbeiterID="M201"/>
+        <Teammitglied MitarbeiterID="M202"/>
+    </Team>
+    
+</Projekt>

@@ -2,25 +2,25 @@
 <!DOCTYPE Projekt SYSTEM "Uebung2.dtd">
 
 <Projekt Aufgabe="Schreibe ein Buch" Deadline="23453">
-    <Mitarbeiter ID="3432" Vorgesetzter="3432"> <!--Der Vorgesetzte hat sich selbst als Referenz-->
+    <Mitarbeiter MitarbeiterID="M200" Vorgesetzer="M200"> <!--Der Vorgesetzte hat sich selbst als Referenz-->
         <Vorname>Ralf</Vorname>
         <Nachname>Stoewing</Nachname>
     </Mitarbeiter>
-    <Mitarbeiter ID="asdfasd" Vorgesetzte="3223">
+    <Mitarbeiter MitarbeiterID="M201" Vorgesetzer="M200">
         <Vorname>Erik</Vorname>
         <Nachname>Mindermann</Nachname>
         <Skill>Softwareentwickler</Skill>
     </Mitarbeiter>
-    <Mitarbeiter ID="asdjkl" Vorgesetzte="dasdfa">
+    <Mitarbeiter MitarbeiterID="M202" Vorgesetzer="M200">
         <Vorname>Natascha</Vorname>
         <Nachname>Meinhardt</Nachname>
-        <Skill></Skill>
+        <Skill>Azubi</Skill>
     </Mitarbeiter>
     
-    <Team Teamleiter="201502" Teilaufgabe="" Deadline="">
-        <Teammitglied ID="3242"/>
-        <Teammitglied ID="2342"/>
-        <Teammitglied ID="23432" />
+    <Team Teamleiter="M200" Teilaufgabe="" Deadline="">
+        <Teammitglied MitarbeiterID="M200"/>
+        <Teammitglied MitarbeiterID="M201"/>
+        <Teammitglied MitarbeiterID="M202" />
     </Team>
     
 </Projekt>
