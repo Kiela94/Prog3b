@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="hsLabSchema"
+    xmlns="hsLabSchema"
+    elementFormDefault="qualified">
+    
+<!-- Definitionsbereich simpleType Anfang -->
+    
+    <!-- Spezieller Datentyp "inventarNr" -->
+    <xs:simpleType name="inventarNr">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}\.[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+<!-- Definitionsbereich simpleType Ende -->
+    
+<!-- Definitionsbereich element Anfang -->
+    
+    <xs:element name="Hersteller" type="xs:string"/>
+    
+    <xs:element name="Besonderheit">
+        <xs:complexType mixed="true">
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="Hersteller"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Beschreibung">
+        <xs:complexType mixed="true">
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="Hersteller"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Erweiterung">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Beschreibung"/>
+                <xs:element ref="Besonderheit" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Hier muss noch eine Referenz auf die Software eingebaut werden -->
+    <xs:element name="Anwendungssoftware">
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="lizenz" type="xs:boolean" default="true"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <!-- Verweis auf software --> 
+    <xs:element name="Betriebssystem">
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Rechner">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Betriebssystem"/>
+                <xs:element name="Anschaffungsdatum">
+                    <xs:complexType>
+                        <xs:attribute name="datum" type="xs:date" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Erweiterung" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="Anwendungssoftware" minOccurs="0" maxOccurs="unbounded"/>
+                
+                <xs:element ref="Beschreibung"/>
+                <xs:element ref="Besonderheit" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="inventarNr" type="inventarNr" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Peripherie">
+        <xs:complexType>
+            <xs:attribute name="inventarNr" type="inventarNr" use="required"/>
+            <xs:attribute name="bezeichnung" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <!-- Ohne Hardware Tag ... ist besser --> 
+    <xs:element name="Hardware">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Peripherie" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Softwarelizenzen">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Betriebssystem" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Beschreibung"/>
+                            <xs:element ref="Besonderheit" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Anwendungssoftware" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Beschreibung"/>
+                            <xs:element ref="Besonderheit" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" use="required"/>
+                        <xs:attribute name="anzahl" type="xs:int" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="Labor">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Rechner" maxOccurs="unbounded"/>
+                <xs:element ref="Hardware" minOccurs="0"/>
+                <xs:element ref="Softwarelizenzen"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string"/>
+            <xs:attribute name="raumNr" type="xs:string"/>
+        </xs:complexType>
+        <xs:key name="Betriebssystem_key">
+            <xs:selector xpath="./Softwarelizenzen/Betriebssystem"/>
+            <xs:field xpath="@name"/>
+        </xs:key>
+        <xs:keyref refer="Betriebssystem_key" name="Betriebssystem_keyref">
+            <xs:selector xpath="./Rechner/Betriebssystem"></xs:selector>
+            <xs:field xpath="@name"></xs:field>
+        </xs:keyref>
+        <xs:key name="Anwendungssoftware_key">
+            <xs:selector xpath="./Softwarelizenzen/Anwendungssoftware"/>
+            <xs:field xpath="@name"/>
+        </xs:key>
+        <xs:keyref refer="Anwendungssoftware_key" name="Anwendungssoftware_keyref">
+            <xs:selector xpath="./Rechner/Anwendungssoftware"/>
+            <xs:field xpath="@name"/>
+        </xs:keyref>
+    </xs:element>
+    
+    <xs:element name="Hochschullabore">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Labor" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="Labor_unique">
+            <xs:selector xpath="./Labor"/>
+            <xs:field xpath="@raumNr"/>
+        </xs:unique>
+        <xs:unique name="Rechner_unique">
+            <xs:selector xpath="./Labor/Rechner"/>
+            <xs:field xpath="@inventarNr"/>
+        </xs:unique>
+        <xs:unique name="Peripherie_unique">
+            <xs:selector xpath="./Labor/Peripherie"/>
+            <xs:field xpath="@inventarNr"/>
+        </xs:unique>
+    </xs:element>
+    
+<!-- Definitionsbereich element Ende -->
+</xs:schema>
