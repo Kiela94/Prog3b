@@ -1,72 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
-<Hochschullabore>
-    <!-- Raumnummer = ID?-->
-    <Labor name="Mulitmedialabor" Raumnummer="Z320">
-        <!-- "InventarNr" muss eine ID sein. -->
-        <Rechner InventarNr="1001">
-            <!-- Mindestens einmal soll der Rechner vorkommen -->
-        </Rechner>
-        
-        <Rechner InventarNr="1002">
-            <Betriebssystem name="Windows10"/> <!-- verweis auf die vorhandene Software -->
-            <Anschaffungsdatum datum="2010-02-01"/>
-            <Erweiterung> <!-- A -->
-                <Beschreibung>zusätzliche Festplatte</Beschreibung>
-                <Besonderheiten><Hersteller>Samsung</Hersteller></Besonderheiten>
-                <Besonderheiten>SSD</Besonderheiten>
-                <Besonderheiten>SATAIII</Besonderheiten>
-                <Besonderheiten>256 GB</Besonderheiten>
-            </Erweiterung>
-            <Erweiterung>
-                <Beschreibung>zusätzlicher Arbeitsspeicher</Beschreibung>
-                <Besonderheiten>DDR4</Besonderheiten>
-                <Besonderheiten>8GB Riegel</Besonderheiten>
-            </Erweiterung>
-            <Erweiterung>
-                <Beschreibung>Grafikkarte</Beschreibung>
-                <Besonderheiten></Besonderheiten>
-            </Erweiterung>
-            <!-- oder B? Ich bin für A -->
-            <Erweiterung Beschreibung="zusätzlicher Arbeitsspeicher">SSD, SATAIII, 256 GB</Erweiterung>
-            
-            <installierte_Software name="eclipse" lizenz="false"/> <!-- Verweis auf Softwarepakete -->
-            <installierte_Software name="oxygen" lizenz="true"/>
-            <installierte_Software name="AdobeReader"/><!--Software ist Lizensiert-->
-            <Beschreibung>Dies ist eine kurze Beschreibung</Beschreibung>
-            <Besonderheiten>Mainboard wurde getauscht</Besonderheiten>
-            <Besonderheiten>Gehäuse stark beschädtigt</Besonderheiten>
-        </Rechner>
-        
-        <Rechner InventarNr="1003">
+<?xml-stylesheet type="text/xsl" href="hochschullabore.xsl"?>
+<!-- <Hochschullabore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="hochschullabore.xsd"> -->
+<Hochschullabore 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="hochschullabore.xsd">
+    
+    <Labor name="Multimedialabor" raumNr="Z2320">
+        <Rechner inventarNr="000.001">
+            <Anschaffungsdatum datum="2016-10-28"/>
+            <Beschreibung>Rechner des Dozenten</Beschreibung>
             <Betriebssystem name="Windows10"/>
+        </Rechner>
+        <Rechner inventarNr="000.002">
             <Anschaffungsdatum datum="2010-02-01"/>
+            <Beschreibung>Dies ist eine kurze Beschreibung des Rechners</Beschreibung>
+            <Besonderheit>Mainboard wurde getauscht</Besonderheit>
+            <Besonderheit>Gehäuse stark beschädtigt</Besonderheit>
+            <Betriebssystem name="Windows10"/>
+            <Anwendungssoftware name="Eclipse" lizenz="false"/>
+            <Anwendungssoftware name="Oxygen" lizenz="true"/>
+            <Anwendungssoftware name="AdobeReader"/>
+            <Erweiterung>
+                <Beschreibung>Zusätzliche Festplatte</Beschreibung>
+                <Besonderheit><Hersteller>Samsung</Hersteller></Besonderheit>
+                <Besonderheit>SSD</Besonderheit>
+                <Besonderheit>SATAIII</Besonderheit>
+                <Besonderheit>256 GB</Besonderheit>
+            </Erweiterung>
+            <Erweiterung>
+                <Beschreibung>Zusätzlicher Arbeitsspeicher</Beschreibung>
+                <Besonderheit>DDR4</Besonderheit>
+                <Besonderheit>8GB Riegel</Besonderheit>
+            </Erweiterung>
+            <Erweiterung>
+                <Beschreibung>Dedizierte Grafikkarte von <Hersteller>GIGABYTE</Hersteller></Beschreibung>
+            </Erweiterung>
+        </Rechner>
+        <Rechner inventarNr="000.003">
+            <Anschaffungsdatum datum="2010-02-01"/>
+            <Beschreibung>Dies ist eine kurze Beschreibung des Rechners</Beschreibung>
+            <Besonderheit>Kaugummi im USB Port vorne</Besonderheit>
+            <Betriebssystem name="Windows10"/>
+            <Anwendungssoftware name="Eclipse" lizenz="false"/> 
+            <Anwendungssoftware name="Oxygen" lizenz="true"/>
+            <Anwendungssoftware name="AdobeReader"/>
             <Erweiterung>
                 <Beschreibung>zusätzliche Festplatte</Beschreibung>
-                <Besonderheiten>HDD</Besonderheiten>
-                <Besonderheiten>SATAII</Besonderheiten>
-                <Besonderheiten>1 TB</Besonderheiten>
-            </Erweiterung>            
-            <installierte_Software name="eclipse" lizenz="false"/> 
-            <installierte_Software name="oxygen" lizenz="true"/>
-            <installierte_Software name="AdobeReader"/>
-            <Beschreibung>Dies ist eine kurze Beschreibung</Beschreibung>
-            <Besonderheiten>Kaugummi im USB Port vorne</Besonderheiten>
+                <Besonderheit>HDD</Besonderheit>
+                <Besonderheit>SATAII</Besonderheit>
+                <Besonderheit>1 TB</Besonderheit>
+            </Erweiterung>
         </Rechner>
-        <Rechner InventarNr="1004">
-            <Betriebssystem name="Windows10"/>
+        <Rechner inventarNr="000.004">
             <Anschaffungsdatum datum="2010-02-01"/>
-            <Erweiterung>
-                <Beschreibung>Gaming Mainboard</Beschreibung>
-                <Besonderheiten>1150 Socket</Besonderheiten>
-                <Besonderheiten>4x DDR3 RAM Slots</Besonderheiten>
-                <Besonderheiten>2 HDMI anschluss</Besonderheiten>
-                <Besonderheiten>...</Besonderheiten>
-            </Erweiterung>            
-            <installierte_Software name="eclipse" lizenz="false"/> 
-            <installierte_Software name="oxygen" lizenz="true"/>
-            <installierte_Software name="AdobeReader"/>
             <Beschreibung>
                 CPU: <Hersteller>Intel</Hersteller> Core i5-6500K
                 Arbeitsspeicher: 8GB
@@ -86,61 +72,65 @@
                 HDMI: 4x
                 Displayport: 3x
             </Beschreibung>
+            <Betriebssystem name="Windows10"/>
+            <Anwendungssoftware name="Eclipse" lizenz="false"/> 
+            <Anwendungssoftware name="Oxygen" lizenz="true"/>
+            <Anwendungssoftware name="AdobeReader"/>
+            <Erweiterung>
+                <Beschreibung>Gaming Mainboard</Beschreibung>
+                <Besonderheit>1150 Socket</Besonderheit>
+                <Besonderheit>4x DDR3 RAM Slots</Besonderheit>
+                <Besonderheit>2 HDMI anschluss</Besonderheit>
+            </Erweiterung>
         </Rechner>
 
-        <vorhandene_peripherie>
-            <peripherie InventarNr="210" Bezeichnung="Drucker"/>
-            <peripherie InventarNr="190" Bezeichnung="Beamer"/>
-            <peripherie InventarNr="100" Bezeichnung="Bildschirm"/>
-        </vorhandene_peripherie>
-        <!-- Das Element "vorhandene_Software" sollte 
-            immer auftrauchen. Der Tag "Software" sollte eine ID sein und 0-unbounded 
-            Gleiches für Peripherie
-        -->
-        <vorhandene_Software>
-            <!-- Der Name muss ein Schlüssel sein --> 
-            <Betriebssystem name="Windows10"><!-- Betriebssysteme mit in dieser Liste aufführen? 
-                Müsste getrennt sein, damit sich bei den Refferenzen aus dem Rechner nicht blöde zufälle ergeben können-->
-                <Beschreibung>Windows10 ist ein gutes Betriebssystem</Beschreibung>
-                <Besonderheit>ist ganz gut</Besonderheit>
-            </Betriebssystem> 
-            <Betriebssystem name="Windows7">
-                <Beschreibung>Windows7 war ein sehr geiles Betriebssystem</Beschreibung>
-                <Besonderheit>Sehr geil</Besonderheit>
-            </Betriebssystem>
-            <Software name="MS-Projekt">
-                <Beschreibung>Text</Beschreibung>
-                <Besonderheit>Text</Besonderheit>
-            </Software> 
-            <Software name="Eclipse">
-                <Beschreibung>Text</Beschreibung>
-                <Besonderheit>Text</Besonderheit>
-            </Software>
-            <Software name="Oxygen">
-                <Beschreibung>Text</Beschreibung>
-                <Besonderheit>Text</Besonderheit>
-            </Software>
-            <Software name="AdobeReader">
-                <Beschreibung>Text</Beschreibung>
-                <Besonderheit>Text</Besonderheit>
-            </Software>
-            <Software name="AdobePlayer">
-                <Beschreibung>Text</Beschreibung>
-                <Besonderheit>Text</Besonderheit>
-            </Software>
-        </vorhandene_Software>
+        <Peripherie inventarNr="000.005" bezeichnung="Drucker"/>
+        <Peripherie inventarNr="000.006" bezeichnung="Beamer"/>
+        <Peripherie inventarNr="000.007" bezeichnung="Bildschirm"/>
     </Labor>
     
-    <Labor>
-        Es gibt natürlich noch weitere Labore in der HS ;-)
+    <Labor name="Multimedialabor" raumNr="Z2321">
+        <Rechner inventarNr="000.005">
+            <Anschaffungsdatum datum="2016-10-28"/>
+            <Beschreibung></Beschreibung>
+            <Betriebssystem name="Windows7"/>
+        </Rechner>
     </Labor>
     
-    <Labor>
-        Es gibt natürlich noch weitere Labore in der HS ;-)
+    <Labor name="INF-Labor" raumNr="Z2322">
+        <Rechner inventarNr="000.008">
+            <Anschaffungsdatum datum="2016-10-28"/>
+            <Beschreibung></Beschreibung>
+            <Betriebssystem name="Windows7"/>
+        </Rechner>
     </Labor>
     
-    <Labor>
-        Es gibt natürlich noch weitere Labore in der HS ;-)
-    </Labor>
+    <Softwarelizenzen>
+        <Betriebssystem name="Windows10">
+            <Beschreibung>Windows10 ist ein gutes Betriebssystem</Beschreibung>
+            <Besonderheit>ist ganz gut</Besonderheit>
+        </Betriebssystem> 
+        <Betriebssystem name="Windows7">
+            <Beschreibung>Windows7 war ein sehr geiles Betriebssystem</Beschreibung>
+            <Besonderheit>Sehr geil</Besonderheit>
+        </Betriebssystem>
+        <Anwendungssoftware name="MS-Projekt" anzahl="25">
+            <Beschreibung>Text</Beschreibung>
+            <Besonderheit>Text</Besonderheit>
+        </Anwendungssoftware> 
+        <Anwendungssoftware name="Eclipse">
+            <Beschreibung>Text</Beschreibung>
+            <Besonderheit>Text</Besonderheit>
+        </Anwendungssoftware>
+        <Anwendungssoftware name="Oxygen">
+            <Beschreibung>Text</Beschreibung>
+        </Anwendungssoftware>
+        <Anwendungssoftware name="AdobeReader">
+            <Beschreibung>Text</Beschreibung>
+        </Anwendungssoftware>
+        <Anwendungssoftware name="AdobePlayer">
+            <Beschreibung>Text</Beschreibung>
+        </Anwendungssoftware>
+    </Softwarelizenzen>
     
 </Hochschullabore>
